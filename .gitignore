@@ -6,4 +6,4 @@ composer.lock
 .idea/
 .vscode/
 *.cache
-phpunit.xml.local
+phpunit.xml.localcomposer.lock

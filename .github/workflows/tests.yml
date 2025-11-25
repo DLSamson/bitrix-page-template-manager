@@ -33,7 +33,6 @@ jobs:
           php-version: ${{ matrix.php-version }}
           coverage: xdebug
           extensions: mbstring, xml, ctype, json
-          ini-values: error_reporting=E_ALL & ~E_DEPRECATED & ~E_STRICT, display_errors=Off
 
       - name: Validate composer.json
         run: composer validate --strict
@@ -43,12 +42,12 @@ jobs:
         uses: actions/cache@v3
         with:
           path: vendor
-          key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ hashFiles('**/composer.json') }}
           restore-keys: |
             ${{ runner.os }}-php-${{ matrix.php-version }}-
 
       - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer update --prefer-dist --no-progress
 
       - name: Run test suite
         run: composer test
