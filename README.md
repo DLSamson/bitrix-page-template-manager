@@ -32,6 +32,94 @@ Include the autoloader in your project:
 require_once 'pathToVendor/autoload.php';
 ```
 
+## 🚀 Quick Start
+
+Here's everything you need to transform your messy Bitrix template into clean, organized code:
+
+### Basic Setup
+
+**Step 1:** Create your template structure:
+
+```
+/local/templates/main/
+└── templates/            ← Your page templates folder
+    ├── header.php                    ← Your default main Bitrix header template
+    ├── footer.php                    ← Your default main Bitrix footer template
+    ├── catalog/
+    │   ├── list.header.php           ← Your catalog list page Bitrix header template
+    │   └── list.footer.php           ← Your catalog list page Bitrix header template
+    └── blog/
+        ├── post.header.php           ← Your blog post page Bitrix header template
+        └── post.footer.php           ← Your blog post page Bitrix footer template
+```
+
+**Step 2:** Initialize in your Bitrix template:
+
+```php
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
+
+use PageTemplateManager\Templater;
+use PageTemplateManager\Manager;
+
+// Setup Templater
+$templater = new Templater(__DIR__ . '/templates');
+
+// Configure Manager with URL patterns
+Manager::enableSingletonPattern(
+    $APPLICATION->GetCurDir(),
+    $templater,
+    [
+        ['name' => null, 'urls' => [
+            '/'                                // Will include header.php or footer.php template
+        ]],
+        ['name' => 'catalog.list', 'urls' => [
+            '/catalog/'                        // Will include catalog/list.header.php or catalog/list.footer.php template
+        ]],
+        ['name' => 'blog.post', 'urls' => [
+            '/blog/(.+)                        // Will include blog/post.header.php or blog/post.footer.php template
+        ']],
+    ]
+);
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title><?php $APPLICATION->ShowTitle() ?></title>
+</head>
+<body>
+    <?php Manager::autoDetectHeaderTemplate() ?>
+    {%PAGE_CONTENT%}
+    <?php Manager::autoDetectFooterTemplate()  ?>
+</body>
+</html>
+```
+
+### Before vs After
+
+**Before** (the painful way):
+```php
+<?php if ($APPLICATION->GetCurDir() == '/'): ?>
+    <!-- Homepage layout -->
+<?php elseif (preg_match('#^/catalog#', $APPLICATION->GetCurDir())): ?>
+    <!-- Catalog layout -->
+<?php elseif (preg_match('#^/blog#', $APPLICATION->GetCurDir())): ?>
+    <!-- Blog layout -->
+<?php else: ?>
+    <!-- Default layout -->
+<?php endif; ?>
+```
+
+**After** (the beautiful way):
+```php
+<?php Manager::autoDetectHeaderTemplate() ?>
+    {%PAGE_CONTENT%}
+<?php Manager::autoDetectFooterTemplate() ?>
+```
+
+Clean. Simple. Beautiful.
+
 ---
 
 ## Core Concepts
