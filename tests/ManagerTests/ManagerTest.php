@@ -19,10 +19,6 @@ final class ManagerTest extends TestCase {
         return require $this->getConfigString();
     }
 
-    public function testCanAutoRequireConfig() : void {
-        
-    }
-
     public function testCanAutoDetectTemplate() {
         $templater = $this->getTemplater();
         $config = $this->getConfigString();
@@ -112,15 +108,16 @@ final class ManagerTest extends TestCase {
         $manager->autoDetectWhateverTypeTemplate();
     }
 
-    public function testNotThrownTemplateNotFound() : void {
-        $currentPageUrl = '/';
-        $templater = $this->getTemplater();
-        $config = $this->getConfigString();
-        
-        $manager = new Manager($currentPageUrl, $templater, $config);
-        $manager->setExceptionSilentMode(true);
-
-        $manager->autoDetectWhateverTypeTemplate();
-        $this->assertNull(null);
-    }
+//    method setExceptionSilentMode does not exists
+//    public function testNotThrownTemplateNotFound() : void {
+//        $currentPageUrl = '/';
+//        $templater = $this->getTemplater();
+//        $config = $this->getConfigString();
+//
+//        $manager = new Manager($currentPageUrl, $templater, $config);
+//        $manager->setExceptionSilentMode(true);
+//
+//        $manager->autoDetectWhateverTypeTemplate();
+//        $this->assertNull(null);
+//    }
 }

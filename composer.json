@@ -1,5 +1,5 @@
 {
-    "name": "dlsamson/page-template-manager",
+    "name": "dlsamson/bitrix-page-template-manager",
     "description": "A package for simplifying the creation and management of page templates within a single Bitrix CMS template",
     "type": "library",
     "license": "MIT",
@@ -24,9 +24,11 @@
     },
     "require-dev": {
         "larapack/dd": "*",
-        "phpunit/phpunit": "^9.6"
+        "phpunit/phpunit": "^9.5|^10.0"
     },
     "scripts": {
-        "tests": "./vendor/bin/phpunit tests"
+        "test": "phpunit",
+        "test-coverage": "phpunit --coverage-html coverage",
+        "test-coverage-text": "phpunit --coverage-text"
     }
 }

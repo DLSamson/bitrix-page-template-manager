@@ -1,3 +1,9 @@
-vendor
-.vscode
-.idea
+/vendor/
+/coverage/
+/.phpunit.cache/
+composer.lock
+.DS_Store
+.idea/
+.vscode/
+*.cache
+phpunit.xml.local
