@@ -1,4 +1,4 @@
-# PageTemplateManager
+# Bitrix Page Template Manager
 
 [![Tests](https://github.com/DLSamson/bitrix-page-template-manager/actions/workflows/tests.yml/badge.svg)](https://github.com/DLSamson/bitrix-page-template-manager/actions/workflows/tests.yml)
 [![codecov](https://codecov.io/gh/DLSamson/bitrix-page-template-manager/branch/main/graph/badge.svg)](https://codecov.io/gh/DLSamson/bitrix-page-template-manager)
@@ -18,9 +18,13 @@ The package offers a simple solution — the ability to specify the URLs of the 
 
 ## Installation
 
+> in progress, otherwise git clone and include yourself
+<!--
 ```bash
 composer require dlsamson/bitrix-page-template-manager
 ```
+-->
+
 
 Include the autoloader in your project:
 
