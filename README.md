@@ -18,13 +18,9 @@ The package offers a simple solution — the ability to specify the URLs of the 
 
 ## Installation
 
-> in progress, otherwise git clone and include yourself
-<!--
 ```bash
 composer require dlsamson/bitrix-page-template-manager
 ```
--->
-
 
 Include the autoloader in your project:
 
@@ -1030,7 +1026,7 @@ The package doesn't cache template paths or URL matching results. For high-traff
 
 - [x] Implement Manager class to auto-detect templates based on URL
 - [x] Add Real-use examples
-- [ ] Submit package to packagist
+- [x] Submit package to packagist
 - [ ] Create docs page on GitHub Pages
 - [ ] Add translation for Russian Language
 - [ ] Make CLI command to easily generate new templates (if in demand)
